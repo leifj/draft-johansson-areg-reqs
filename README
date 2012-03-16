@@ -1,0 +1,13 @@
+What is this?
+=============
+
+This is a document attempts to collect a set of requirements for a global registry of
+attribute types for use in claims-based protocols. It is provided in the Internet Draft
+format.
+
+Who is doing this?
+==================
+
+This work was inspired by a discussion in the ISOC identity ecosystem workshops in 
+Amsterdam and Washington DC. Primary stuckees with trying to capture requirements
+are Leif Johansson (NORDUnet), Heather Flanagan (ISOC) and James Clark (OASIS).
