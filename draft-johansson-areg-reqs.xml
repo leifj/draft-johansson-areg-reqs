@@ -185,7 +185,7 @@
       values that are used to allow or deny access to a protected resource.
       Some attributes carry identifiers as values. A discussion of the
       security implications of handling identifiers can be found in <xref
-      target="reference.I-D.draft-iab-identifier-comparison">draft-iab-identifier-comparison</xref>.</t>
+      target="I-D.iab-identifier-comparison">draft-iab-identifier-comparison</xref>.</t>
     </section>
   </middle>
 
@@ -193,7 +193,7 @@
     <references title="Normative References">
       <?rfc include="reference.RFC.2119"?>
 
-      <?rfc include="http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-iab-identifier-comparison"?>
+      <?rfc include="reference.I-D.iab-identifier-comparison"?>
     </references>
   </back>
 </rfc>
