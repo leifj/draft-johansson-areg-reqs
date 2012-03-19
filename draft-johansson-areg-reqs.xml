@@ -45,25 +45,28 @@
   <middle>
     <section title="Introduction and Motivation">
       <t>An attribute is a representation of a single datum of information
-      associated with an entity. Attributes types are defined by semantics and
-      syntax that allow them to be used in a variety of protocols. This
-      document lists requrements for a registry of such attribute type
-      definitions. Historically, and still today, protocols that rely on the
-      transfer of attributes (like OpenID Connect, OAUTH, WS-Federation or
-      SAML) often rely on (at least in the case of attributes associated with
-      accounts and persons) attribute type definitions that are borrowed from
-      LDAP or X.509 schema even though those particular protocols no longer
-      represent the common method to use attributes.</t>
+      associated with an entity. The type of the attribute (the 'attribute
+      type') is defined by semantics and syntax that allow it to be used in a
+      variety of protocols and representations. </t>
 
-      <t>Claims-based protocols are increasingly being used on the Internet. A
-      common use-case for such protocols is to build identity federations that
-      rely on the transfer of attribute-values as a means to communicate
-      authorization-information. Identity federations are often purposed to
-      specific communities and groups. Often such communities need to engage
-      in transactions across federation boundries (eg when sharing services).
-      This practice is called inter-federation. Inter-federation raises the
-      need for a way to discover information about the attributes used in the
-      protocols employed inside and between federations. </t>
+      <t>This document lists requrements for a registry of such attribute type
+      definitions. For a long time, protocols that rely on the transfer of
+      attributes (like OpenID Connect, OAUTH, WS-Federation or SAML) often
+      rely on, at least in the case of attributes associated with accounts and
+      persons, attribute type definitions that are borrowed from LDAP or X.509
+      schema even though those particular protocols no longer represent the
+      common method to transfer and consume attributes.</t>
+
+      <t>Claims-based protocols are widely used on the Internet today. A
+      common use-case for such protocols is to establish identity federations
+      that rely on the transfer of attribute-values as a means to communicate
+      subject information. Identity federations are often purposed to specific
+      communities. Increasingly such communities need to engage in
+      transactions across federation boundries (eg when sharing services with
+      other communities). This practice is called inter-federation.
+      Inter-federation raises the need for a way to discover information about
+      the attributes used in the protocols employed inside and between
+      federations. </t>
 
       <t>This document attempts to address these problems by establishing a
       set of requirements for an Internet-wide registry of attribute-type
@@ -72,11 +75,9 @@
     </section>
 
     <section title="Core Concerns">
-      <t>In order to set the stage for and properly frame the registry
+      <t>In order to set the stage for, and properly frame the registry
       requirements the following section lists a set of core concerns that
       MUST be address by the registry requirements proper:</t>
-
-      <t></t>
 
       <section title="Naming">
         <t>It is implied that attribute types have names that uniquely
@@ -87,20 +88,35 @@
         name that can be allocated, delegated and used to stablish global
         uniqueness. </t>
 
-        <t>Currently used attribute type definitions use a variety of name
-        spaces including OIDs, URIs and URNs but there are also example of
-        attribute type name aliasing and the use of commonly used
-        short-names.</t>
+        <t>There are examples of attribute type definitions that are in common
+        use today that employ a variety of name spaces including both OIDs,
+        http-based URIs and URNs.</t>
+
+        <t>Another aspect of naming is name agility. Depending on the protocol
+        use to represent the name it is sometimes necessary to have to create
+        an alias for a name within another namespace. Name agility has
+        implication for the structure and contents of an attribute
+        registry.</t>
+      </section>
+
+      <section title="Use">
+        <t>The core usage-question is this: will the attribute registry be
+        used in conjunction with individual transactions or as a tool for
+        configuration, discovery and information related to the task of
+        setting up federations and other relationships using claims-based
+        protocols. The former use-case requires a global service available 247
+        while the latter requires the availability typically found in a
+        website providing documentation.</t>
       </section>
 
       <section title="Data Locality">
-        <t>There are two fundamental models for registries: centralized and
-        distributed. In a central registry all the information is kept and
-        maintained in one place whereas a distributed registry shares
-        information in the registry over multiple cooperative instances that
-        together make up the full registry. It is possible to concieve of
-        hybrid models where for instance a central index is used to store
-        referrals to a set of distributed nodes.</t>
+        <t>There are two fundamental models for registries (as for any data
+        store): centralized and distributed. In a central registry all the
+        information is kept and maintained in one place whereas a distributed
+        registry shares information in the registry over multiple cooperative
+        instances that together make up the full registry. It is possible to
+        concieve of hybrid models where for instance a central index is used
+        to store referrals to a set of distributed nodes.</t>
 
         <t>The distributed model is most often used when there expected use of
         the registry would imply a very high load on a single registry
@@ -130,10 +146,21 @@
         will probably be a need to support multiple schema in the
         registry.</t>
 
-        <t>Furthermore LDAP and X.509 schema have a property that is not used
-        in claims-based protocols: objectClass definitions. These are schema
-        elements that often list a set of mandatory and/or optional associated
-        attributes.</t>
+        <t>Note that LDAP and X.509 schema have a property that is not
+        currently used in claims-based protocols: objectClass definitions.
+        These are schema elements that often list a set of mandatory and/or
+        optional associated attributes.</t>
+
+        <t>Depending on he intended use of the registry there may need to
+        exist a native attribute schema for the registry which may or may not
+        need to represent the complete set of properties of each attribute
+        type. For instance if the intended use of the registry is to support
+        configuration and setup of federation, rather than in-transaction
+        discovery of attribute properties, the registry native schema may not
+        have to include all information of each attribute. Instead it would be
+        possible to maintain a minimal set of core properties in the registry
+        and provide references to external information sources that could be
+        chaised for additional information.</t>
       </section>
 
       <section title="Lookup and Search">
@@ -145,30 +172,98 @@
         domain name, lookup the corresponding records in the DNS but it is not
         in general possible to search for records given knowledge of part of a
         domain name.</t>
-
-        <t>The choice of weather to support search or just lookup based on
-        attribute names is a critical question to answer for the attribute
-        registry.</t>
       </section>
+    </section>
+
+    <section title="Requrements">
+      <t>The following terminology is used in this section:</t>
+
+      <t><list style="hanging">
+          <t hangText="registry">An instance of an attribute registry
+          fulfilling these requirements.</t>
+
+          <t hangText="consumer">A user, device, process or other entity that
+          consumes information from the registry.</t>
+
+          <t hangText="attribute type">An element of the registry.</t>
+
+          <t hangText="attribute name">Synonymous with attribute type name</t>
+        </list></t>
 
       <section title="Use">
-        <t>The core usage-question is this: will the attribute registry be
-        used in conjunction with individual transactions or as a tool for
-        configuration, discovery and information related to the task of
-        setting up federations and other relationships using claims-based
-        protocols. The former use-case requires a global service available 247
-        while the latter requires the availability typically found in a
-        website providing documentation.</t>
+        <t><list style="symbols">
+            <t>A consumer MUST NOT directly use the registry for
+            in-transaction lookup.</t>
+          </list>The registry is primarily intended for use as a tool to help
+        discover attribute type information related to setup and configuration
+        of federations. While services that directly tie in to authentication
+        events (for instance in order to provide i18n of attribute friendly
+        names) may be needed, such services can always be developed as
+        commercial spin-offs from the basic registry.</t>
+      </section>
+
+      <section title="Data Locality">
+        <t><list style="symbols">
+            <t>The registry SHOULD be established as a central,
+            non-distributed registry.</t>
+          </list>Since the primary use of the registry is not for
+        in-transaction lookups the registry does not need to be distributed
+        which reduces the complexity of the registry.</t>
+      </section>
+
+      <section title="Naming">
+        <t><list style="symbols">
+            <t>The registry MUST support multiple name spaces for naming
+            attribute types.</t>
+
+            <t>The registry MUST support attribute type name aliases.</t>
+
+            <t>The registry MAY support aliases that are namespace-free short
+            names.</t>
+
+            <t>The registry SHOULD (if such names are supported) impose
+            restrictions on registering short names.</t>
+          </list></t>
+
+        <t></t>
+      </section>
+
+      <section title="Schema">
+        <t><list style="symbols">
+            <t>The registry SHOULD support a native attribute type schema.</t>
+
+            <t>The native attribute type schema MUST map cleanly (in)to
+            X.520/LDAP schema for attribute types</t>
+
+            <t>The native attribute type schema MAY only represent a subset of
+            the features of X.520/LDAP schema</t>
+
+            <t>The native attribute type schema SHOULD support multiple
+            serializations (XML,JSON,etc)</t>
+          </list></t>
+      </section>
+
+      <section title="Lookup and Search">
+        <t><list style="symbols">
+            <t>The registry MUST support lookup based on attribute type
+            name.</t>
+
+            <t>The registry MUST support lookup based on attribute type
+            aliases if they are provided.</t>
+
+            <t>The registry MAY support search but registry consumers MUST NOT
+            assume support for search.</t>
+          </list></t>
       </section>
     </section>
 
     <section anchor="Acknowledgements" title="Acknowledgements">
       <t>This work was inspired by discussions at the ISOC identity ecosystem
-      workshops held in Amsterdam and Washington DC during 2011 and 2012.</t>
+      workshops held in Amsterdam and Gathersburgh MD in 2011 and 2012.</t>
     </section>
 
     <section anchor="Contributors" title="Contributors">
-      <t>Main contributors for this work is<list style="symbols">
+      <t>Main contributors for this work has been<list style="symbols">
           <t>Heather Flanagan (ISOC/Internet2)</t>
 
           <t>James Bryce Clark (OASIS)</t>
