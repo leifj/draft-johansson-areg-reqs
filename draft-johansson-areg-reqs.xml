@@ -11,7 +11,7 @@
 <rfc category="info" docName="draft-johansson-areg-reqs-00"
      ipr="pre5378Trust200902">
   <front>
-    <title abbrev="Attribute Registry Requirements">Requirements for an IANA
+    <title abbrev="Attribute Registry Requirements">Requirements on an
     Attribute Registry</title>
 
     <author fullname="Leif Johansson" initials="L." role="editor"
@@ -22,8 +22,31 @@
         <email>leifj@nordu.net</email>
       </address>
     </author>
+ 
+    <author fullname="Heather Flanagan" initials="H" surname="Flanagan">
+      <organization>Internet2</organization>
 
-    <date month="March" year="2011" />
+      <address>
+        <postal>
+          <street>1000 Oakbrook Drive Suite 300</street>
+
+          <city>Ann Arbor</city>
+
+          <region>MI</region>
+
+          <code>48104 </code>
+
+          <country>US</country>
+        </postal>
+
+        <phone>+1-360-562-0319</phone>
+
+        <email>hlflanagan@internet2.edu</email>
+
+      </address>
+    </author>
+
+    <date day="30" month="July" year="2012" />
 
     <area>General</area>
 
@@ -47,7 +70,7 @@
       <t>An attribute is a representation of a single datum of information
       associated with an entity. The type of the attribute (the 'attribute
       type') is defined by semantics and syntax that allow it to be used in a
-      variety of protocols and representations. </t>
+      variety of protocols and representations.</t>
 
       <t>This document lists requrements for a registry of such attribute type
       definitions. For a long time, protocols that rely on the transfer of
@@ -57,16 +80,16 @@
       schema even though those particular protocols no longer represent the
       common method to transfer and consume attributes.</t>
 
-      <t>Claims-based protocols are widely used on the Internet today. A
-      common use-case for such protocols is to establish identity federations
-      that rely on the transfer of attribute-values as a means to communicate
-      subject information. Identity federations are often purposed to specific
-      communities. Increasingly such communities need to engage in
-      transactions across federation boundries (eg when sharing services with
-      other communities). This practice is called inter-federation.
-      Inter-federation raises the need for a way to discover information about
-      the attributes used in the protocols employed inside and between
-      federations. </t>
+      <t>Claims-based protocols (for instance SAML or OpenID Connect) are
+      widely used on the Internet today. A common use-case for such protocols
+      is to establish identity federations that rely on the transfer of
+      attribute-values as a means to communicate subject information. Identity
+      federations are often purposed to specific communities. Increasingly
+      such communities need to engage in transactions across federation
+      boundries (eg when sharing services with other communities). This
+      practice is called inter-federation. Inter-federation raises the need
+      for a way to discover information about the attributes used in the
+      protocols employed inside and between federations.</t>
 
       <t>This document attempts to address these problems by establishing a
       set of requirements for an Internet-wide registry of attribute-type
@@ -86,7 +109,7 @@
         management. A common way to implement name management is to structure
         the names in such a way as to establish name-spaces - parts of the
         name that can be allocated, delegated and used to stablish global
-        uniqueness. </t>
+        uniqueness.</t>
 
         <t>There are examples of attribute type definitions that are in common
         use today that employ a variety of name spaces including both OIDs,
@@ -97,6 +120,11 @@
         an alias for a name within another namespace. Name agility has
         implication for the structure and contents of an attribute
         registry.</t>
+
+        <t>Attribute names sometime need human-readable (aka "friendly")
+        labels. This leads to questions of internationalization and possibly
+        security considerations in analogy to how IDNs can result in new
+        attack-vectors when used in URIs.</t>
       </section>
 
       <section title="Use">
@@ -107,6 +135,11 @@
         protocols. The former use-case requires a global service available 247
         while the latter requires the availability typically found in a
         website providing documentation.</t>
+
+        <t>This document is skewed towards the former use-case. The authors
+        believe that the operational issues involved in the latter type of
+        registry would be daunting to say the least and it is only presented
+        here for completeness.</t>
       </section>
 
       <section title="Data Locality">
@@ -132,8 +165,13 @@
         small (at least compared to the DNS or systems of similar scale). The
         fact that the registry is operated in a single instance does not
         necessarily imply lowered requirements on availability and security.
-        An example of this type of registry is the Time Zone Database (TODO -
-        RFC reference).</t>
+        An example of this type of registry is the Time Zone Database <xref
+        target="RFC6557"></xref>.</t>
+
+        <t>One possible basis for a distributed registry is the Dynamic
+        Delegation Discovery System (DDDS) as described in <xref
+        target="RFC3401"></xref><xref target="RFC3402">,</xref><xref
+        target="RFC3403">,</xref><xref target="RFC3404"> and</xref>.</t>
       </section>
 
       <section title="Schema">
@@ -287,6 +325,16 @@
   <back>
     <references title="Normative References">
       <?rfc include="reference.RFC.2119"?>
+
+      <?rfc include="reference.RFC.3401"?>
+
+      <?rfc include="reference.RFC.3402"?>
+
+      <?rfc include="reference.RFC.3403"?>
+
+      <?rfc include="reference.RFC.3404"?>
+
+      <?rfc include="reference.RFC.6557"?>
 
       <?rfc include="reference.I-D.iab-identifier-comparison"?>
     </references>
