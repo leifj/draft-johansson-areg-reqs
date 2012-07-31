@@ -1,8 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en"><head><title>Requirements for an IANA
+<html lang="en"><head><title>Requirements on an
     Attribute Registry</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="Requirements for an IANA
+<meta name="description" content="Requirements on an
     Attribute Registry">
 <meta name="generator" content="xml2rfc v1.36 (http://xml.resource.org/)">
 <style type='text/css'><!--
@@ -145,10 +145,11 @@
 <table summary="layout" width="66%" border="0" cellpadding="0" cellspacing="0"><tr><td><table summary="layout" width="100%" border="0" cellpadding="2" cellspacing="1">
 <tr><td class="header">Internet Engineering Task Force</td><td class="header">L. Johansson, Ed.</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">NORDUnet</td></tr>
-<tr><td class="header">Intended status: Informational</td><td class="header">March 2011</td></tr>
-<tr><td class="header">Expires: September 2, 2011</td><td class="header">&nbsp;</td></tr>
+<tr><td class="header">Intended status: Informational</td><td class="header">H. Flanagan</td></tr>
+<tr><td class="header">Expires: January 31, 2013</td><td class="header">Internet2</td></tr>
+<tr><td class="header">&nbsp;</td><td class="header">July 30, 2012</td></tr>
 </table></td></tr></table>
-<h1><br />Requirements for an IANA
+<h1><br />Requirements on an
     Attribute Registry<br />draft-johansson-areg-reqs-00</h1>
 
 <h3>Abstract</h3>
@@ -177,11 +178,11 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on September 2, 2011.</p>
+This Internet-Draft will expire on January 31, 2013.</p>
 
 <h3>Copyright Notice</h3>
 <p>
-Copyright (c) 2011 IETF Trust and the persons identified as the
+Copyright (c) 2012 IETF Trust and the persons identified as the
 document authors.  All rights reserved.</p>
 <p>
 This document is subject to BCP 78 and the IETF Trust's Legal
@@ -245,7 +246,7 @@ Security Considerations<br />
 <a href="#rfc.references1">8.</a>&nbsp;
 Normative References<br />
 <a href="#rfc.authors">&#167;</a>&nbsp;
-Author's Address<br />
+Authors' Addresses<br />
 </p>
 <br clear="all" />
 
@@ -257,7 +258,7 @@ Introduction and Motivation</h3>
 <p>An attribute is a representation of a single datum of information
       associated with an entity. The type of the attribute (the 'attribute
       type') is defined by semantics and syntax that allow it to be used in a
-      variety of protocols and representations. 
+      variety of protocols and representations.
 </p>
 <p>This document lists requrements for a registry of such attribute type
       definitions. For a long time, protocols that rely on the transfer of
@@ -267,16 +268,16 @@ Introduction and Motivation</h3>
       schema even though those particular protocols no longer represent the
       common method to transfer and consume attributes.
 </p>
-<p>Claims-based protocols are widely used on the Internet today. A
-      common use-case for such protocols is to establish identity federations
-      that rely on the transfer of attribute-values as a means to communicate
-      subject information. Identity federations are often purposed to specific
-      communities. Increasingly such communities need to engage in
-      transactions across federation boundries (eg when sharing services with
-      other communities). This practice is called inter-federation.
-      Inter-federation raises the need for a way to discover information about
-      the attributes used in the protocols employed inside and between
-      federations. 
+<p>Claims-based protocols (for instance SAML or OpenID Connect) are
+      widely used on the Internet today. A common use-case for such protocols
+      is to establish identity federations that rely on the transfer of
+      attribute-values as a means to communicate subject information. Identity
+      federations are often purposed to specific communities. Increasingly
+      such communities need to engage in transactions across federation
+      boundries (eg when sharing services with other communities). This
+      practice is called inter-federation. Inter-federation raises the need
+      for a way to discover information about the attributes used in the
+      protocols employed inside and between federations.
 </p>
 <p>This document attempts to address these problems by establishing a
       set of requirements for an Internet-wide registry of attribute-type
@@ -303,7 +304,7 @@ Naming</h3>
         management. A common way to implement name management is to structure
         the names in such a way as to establish name-spaces - parts of the
         name that can be allocated, delegated and used to stablish global
-        uniqueness. 
+        uniqueness.
 </p>
 <p>There are examples of attribute type definitions that are in common
         use today that employ a variety of name spaces including both OIDs,
@@ -314,6 +315,11 @@ Naming</h3>
         an alias for a name within another namespace. Name agility has
         implication for the structure and contents of an attribute
         registry.
+</p>
+<p>Attribute names sometime need human-readable (aka "friendly")
+        labels. This leads to questions of internationalization and possibly
+        security considerations in analogy to how IDNs can result in new
+        attack-vectors when used in URIs.
 </p>
 <a name="anchor4"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
@@ -327,6 +333,11 @@ Use</h3>
         protocols. The former use-case requires a global service available 247
         while the latter requires the availability typically found in a
         website providing documentation.
+</p>
+<p>This document is skewed towards the former use-case. The authors
+        believe that the operational issues involved in the latter type of
+        registry would be daunting to say the least and it is only presented
+        here for completeness.
 </p>
 <a name="anchor5"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
@@ -355,8 +366,10 @@ Data Locality</h3>
         small (at least compared to the DNS or systems of similar scale). The
         fact that the registry is operated in a single instance does not
         necessarily imply lowered requirements on availability and security.
-        An example of this type of registry is the Time Zone Database (TODO -
-        RFC reference).
+        An example of this type of registry is the Time Zone Database <a class='info' href='#RFC6557'>[RFC6557]<span> (</span><span class='info'>Lear, E. and P. Eggert, &ldquo;Procedures for Maintaining the Time Zone Database,&rdquo; February&nbsp;2012.</span><span>)</span></a>.
+</p>
+<p>One possible basis for a distributed registry is the Dynamic
+        Delegation Discovery System (DDDS) as described in <a class='info' href='#RFC3401'>[RFC3401]<span> (</span><span class='info'>Mealling, M., &ldquo;Dynamic Delegation Discovery System (DDDS) Part One: The Comprehensive DDDS,&rdquo; October&nbsp;2002.</span><span>)</span></a><a class='info' href='#RFC3402'>,<span> (</span><span class='info'>Mealling, M., &ldquo;Dynamic Delegation Discovery System (DDDS) Part Two: The Algorithm,&rdquo; October&nbsp;2002.</span><span>)</span></a> [RFC3402]<a class='info' href='#RFC3403'>,<span> (</span><span class='info'>Mealling, M., &ldquo;Dynamic Delegation Discovery System (DDDS) Part Three: The Domain Name System (DNS) Database,&rdquo; October&nbsp;2002.</span><span>)</span></a> [RFC3403]<a class='info' href='#RFC3404'>and<span> (</span><span class='info'>Mealling, M., &ldquo;Dynamic Delegation Discovery System (DDDS) Part Four: The Uniform Resource Identifiers (URI),&rdquo; October&nbsp;2002.</span><span>)</span></a> [RFC3404].
 </p>
 <a name="anchor6"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
@@ -564,12 +577,22 @@ Security Considerations</h3>
 <tr><td class="author-text" valign="top"><a name="I-D.iab-identifier-comparison">[I-D.iab-identifier-comparison]</a></td>
 <td class="author-text">Thaler, D., &ldquo;<a href="http://tools.ietf.org/html/draft-iab-identifier-comparison-01">Issues in Identifier Comparison for Security Purposes</a>,&rdquo; draft-iab-identifier-comparison-01 (work in progress), March&nbsp;2012 (<a href="http://www.ietf.org/internet-drafts/draft-iab-identifier-comparison-01.txt">TXT</a>).</td></tr>
 <tr><td class="author-text" valign="top"><a name="RFC2119">[RFC2119]</a></td>
-<td class="author-text"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>,&rdquo; BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997 (<a href="ftp://ftp.isi.edu/in-notes/rfc2119.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2119.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2119.xml">XML</a>).</td></tr>
+<td class="author-text"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>,&rdquo; BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997 (<a href="http://www.rfc-editor.org/rfc/rfc2119.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2119.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2119.xml">XML</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC3401">[RFC3401]</a></td>
+<td class="author-text">Mealling, M., &ldquo;<a href="http://tools.ietf.org/html/rfc3401">Dynamic Delegation Discovery System (DDDS) Part One: The Comprehensive DDDS</a>,&rdquo; RFC&nbsp;3401, October&nbsp;2002 (<a href="http://www.rfc-editor.org/rfc/rfc3401.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC3402">[RFC3402]</a></td>
+<td class="author-text">Mealling, M., &ldquo;<a href="http://tools.ietf.org/html/rfc3402">Dynamic Delegation Discovery System (DDDS) Part Two: The Algorithm</a>,&rdquo; RFC&nbsp;3402, October&nbsp;2002 (<a href="http://www.rfc-editor.org/rfc/rfc3402.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC3403">[RFC3403]</a></td>
+<td class="author-text">Mealling, M., &ldquo;<a href="http://tools.ietf.org/html/rfc3403">Dynamic Delegation Discovery System (DDDS) Part Three: The Domain Name System (DNS) Database</a>,&rdquo; RFC&nbsp;3403, October&nbsp;2002 (<a href="http://www.rfc-editor.org/rfc/rfc3403.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC3404">[RFC3404]</a></td>
+<td class="author-text">Mealling, M., &ldquo;<a href="http://tools.ietf.org/html/rfc3404">Dynamic Delegation Discovery System (DDDS) Part Four: The Uniform Resource Identifiers (URI)</a>,&rdquo; RFC&nbsp;3404, October&nbsp;2002 (<a href="http://www.rfc-editor.org/rfc/rfc3404.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC6557">[RFC6557]</a></td>
+<td class="author-text">Lear, E. and P. Eggert, &ldquo;<a href="http://tools.ietf.org/html/rfc6557">Procedures for Maintaining the Time Zone Database</a>,&rdquo; BCP&nbsp;175, RFC&nbsp;6557, February&nbsp;2012 (<a href="http://www.rfc-editor.org/rfc/rfc6557.txt">TXT</a>).</td></tr>
 </table>
 
 <a name="rfc.authors"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<h3>Author's Address</h3>
+<h3>Authors' Addresses</h3>
 <table width="99%" border="0" cellpadding="0" cellspacing="0">
 <tr><td class="author-text">&nbsp;</td>
 <td class="author-text">Leif Johansson (editor)</td></tr>
@@ -577,5 +600,20 @@ Security Considerations</h3>
 <td class="author-text">NORDUnet</td></tr>
 <tr><td class="author" align="right">Email:&nbsp;</td>
 <td class="author-text"><a href="mailto:leifj@nordu.net">leifj@nordu.net</a></td></tr>
+<tr cellpadding="3"><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">Heather Flanagan</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">Internet2</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">1000 Oakbrook Drive Suite 300</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">Ann Arbor, MI  48104</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">US</td></tr>
+<tr><td class="author" align="right">Phone:&nbsp;</td>
+<td class="author-text">+1-360-562-0319</td></tr>
+<tr><td class="author" align="right">Email:&nbsp;</td>
+<td class="author-text"><a href="mailto:hlflanagan@internet2.edu">hlflanagan@internet2.edu</a></td></tr>
 </table>
 </body></html>

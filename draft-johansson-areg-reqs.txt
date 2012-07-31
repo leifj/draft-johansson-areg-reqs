@@ -3,11 +3,12 @@
 
 Internet Engineering Task Force                        L. Johansson, Ed.
 Internet-Draft                                                  NORDUnet
-Intended status: Informational                                March 2011
-Expires: September 2, 2011
+Intended status: Informational                               H. Flanagan
+Expires: January 31, 2013                                      Internet2
+                                                           July 30, 2012
 
 
-              Requirements for an IANA Attribute Registry
+                 Requirements on an Attribute Registry
                       draft-johansson-areg-reqs-00
 
 Abstract
@@ -36,11 +37,11 @@ Status of this Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 2, 2011.
+   This Internet-Draft will expire on January 31, 2013.
 
 Copyright Notice
 
-   Copyright (c) 2011 IETF Trust and the persons identified as the
+   Copyright (c) 2012 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -48,15 +49,15 @@ Copyright Notice
    (http://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
-   to this document.  Code Components extracted from this document must
 
 
 
-Johansson               Expires September 2, 2011               [Page 1]
+Johansson & Flanagan    Expires January 31, 2013                [Page 1]
 
-Internet-Draft       Attribute Registry Requirements          March 2011
+Internet-Draft       Attribute Registry Requirements           July 2012
 
 
+   to this document.  Code Components extracted from this document must
    include Simplified BSD License text as described in Section 4.e of
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
@@ -74,27 +75,65 @@ Internet-Draft       Attribute Registry Requirements          March 2011
    than English.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Johansson & Flanagan    Expires January 31, 2013                [Page 2]
+
+Internet-Draft       Attribute Registry Requirements           July 2012
+
+
 Table of Contents
 
-   1.  Introduction and Motivation . . . . . . . . . . . . . . . . . . 3
-   2.  Core Concerns . . . . . . . . . . . . . . . . . . . . . . . . . 3
-     2.1.  Naming  . . . . . . . . . . . . . . . . . . . . . . . . . . 3
-     2.2.  Use . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
-     2.3.  Data Locality . . . . . . . . . . . . . . . . . . . . . . . 4
-     2.4.  Schema  . . . . . . . . . . . . . . . . . . . . . . . . . . 5
-     2.5.  Lookup and Search . . . . . . . . . . . . . . . . . . . . . 5
-   3.  Requrements . . . . . . . . . . . . . . . . . . . . . . . . . . 5
-     3.1.  Use . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
-     3.2.  Data Locality . . . . . . . . . . . . . . . . . . . . . . . 6
-     3.3.  Naming  . . . . . . . . . . . . . . . . . . . . . . . . . . 6
-     3.4.  Schema  . . . . . . . . . . . . . . . . . . . . . . . . . . 6
-     3.5.  Lookup and Search . . . . . . . . . . . . . . . . . . . . . 7
-   4.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . 7
-   5.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . 7
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . . 7
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . . . 7
-   8.  Normative References  . . . . . . . . . . . . . . . . . . . . . 8
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . . . 8
+   1.  Introduction and Motivation . . . . . . . . . . . . . . . . . . 4
+   2.  Core Concerns . . . . . . . . . . . . . . . . . . . . . . . . . 4
+     2.1.  Naming  . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+     2.2.  Use . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+     2.3.  Data Locality . . . . . . . . . . . . . . . . . . . . . . . 5
+     2.4.  Schema  . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+     2.5.  Lookup and Search . . . . . . . . . . . . . . . . . . . . . 6
+   3.  Requrements . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+     3.1.  Use . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+     3.2.  Data Locality . . . . . . . . . . . . . . . . . . . . . . . 7
+     3.3.  Naming  . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+     3.4.  Schema  . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+     3.5.  Lookup and Search . . . . . . . . . . . . . . . . . . . . . 8
+   4.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . 8
+   5.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . 8
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . . 8
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . . . 9
+   8.  Normative References  . . . . . . . . . . . . . . . . . . . . . 9
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . . 9
 
 
 
@@ -108,9 +147,26 @@ Table of Contents
 
 
 
-Johansson               Expires September 2, 2011               [Page 2]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Johansson & Flanagan    Expires January 31, 2013                [Page 3]
 
-Internet-Draft       Attribute Registry Requirements          March 2011
+Internet-Draft       Attribute Registry Requirements           July 2012
 
 
 1.  Introduction and Motivation
@@ -128,16 +184,17 @@ Internet-Draft       Attribute Registry Requirements          March 2011
    or X.509 schema even though those particular protocols no longer
    represent the common method to transfer and consume attributes.
 
-   Claims-based protocols are widely used on the Internet today.  A
-   common use-case for such protocols is to establish identity
-   federations that rely on the transfer of attribute-values as a means
-   to communicate subject information.  Identity federations are often
-   purposed to specific communities.  Increasingly such communities need
-   to engage in transactions across federation boundries (eg when
-   sharing services with other communities).  This practice is called
-   inter-federation.  Inter-federation raises the need for a way to
-   discover information about the attributes used in the protocols
-   employed inside and between federations.
+   Claims-based protocols (for instance SAML or OpenID Connect) are
+   widely used on the Internet today.  A common use-case for such
+   protocols is to establish identity federations that rely on the
+   transfer of attribute-values as a means to communicate subject
+   information.  Identity federations are often purposed to specific
+   communities.  Increasingly such communities need to engage in
+   transactions across federation boundries (eg when sharing services
+   with other communities).  This practice is called inter-federation.
+   Inter-federation raises the need for a way to discover information
+   about the attributes used in the protocols employed inside and
+   between federations.
 
    This document attempts to address these problems by establishing a
    set of requirements for an Internet-wide registry of attribute-type
@@ -160,15 +217,15 @@ Internet-Draft       Attribute Registry Requirements          March 2011
    in such a way as to establish name-spaces - parts of the name that
    can be allocated, delegated and used to stablish global uniqueness.
 
-   There are examples of attribute type definitions that are in common
 
 
 
-Johansson               Expires September 2, 2011               [Page 3]
+Johansson & Flanagan    Expires January 31, 2013                [Page 4]
 
-Internet-Draft       Attribute Registry Requirements          March 2011
+Internet-Draft       Attribute Registry Requirements           July 2012
 
 
+   There are examples of attribute type definitions that are in common
    use today that employ a variety of name spaces including both OIDs,
    http-based URIs and URNs.
 
@@ -176,6 +233,11 @@ Internet-Draft       Attribute Registry Requirements          March 2011
    use to represent the name it is sometimes necessary to have to create
    an alias for a name within another namespace.  Name agility has
    implication for the structure and contents of an attribute registry.
+
+   Attribute names sometime need human-readable (aka "friendly") labels.
+   This leads to questions of internationalization and possibly security
+   considerations in analogy to how IDNs can result in new attack-
+   vectors when used in URIs.
 
 2.2.  Use
 
@@ -186,6 +248,11 @@ Internet-Draft       Attribute Registry Requirements          March 2011
    protocols.  The former use-case requires a global service available
    247 while the latter requires the availability typically found in a
    website providing documentation.
+
+   This document is skewed towards the former use-case.  The authors
+   believe that the operational issues involved in the latter type of
+   registry would be daunting to say the least and it is only presented
+   here for completeness.
 
 2.3.  Data Locality
 
@@ -206,6 +273,14 @@ Internet-Draft       Attribute Registry Requirements          March 2011
    lookups.
 
    The central model by contrast is simpler in that no protocol needs to
+
+
+
+Johansson & Flanagan    Expires January 31, 2013                [Page 5]
+
+Internet-Draft       Attribute Registry Requirements           July 2012
+
+
    be specified for communicating between registry instances and that
    lookup can be handled to a single well know instance.  This model may
    be preferred if the total amount of data in the registry is
@@ -213,17 +288,11 @@ Internet-Draft       Attribute Registry Requirements          March 2011
    scale).  The fact that the registry is operated in a single instance
    does not necessarily imply lowered requirements on availability and
    security.  An example of this type of registry is the Time Zone
-   Database (TODO - RFC reference).
+   Database [RFC6557].
 
-
-
-
-
-
-Johansson               Expires September 2, 2011               [Page 4]
-
-Internet-Draft       Attribute Registry Requirements          March 2011
-
+   One possible basis for a distributed registry is the Dynamic
+   Delegation Discovery System (DDDS) as described in [RFC3401],
+   [RFC3402], [RFC3403]and [RFC3404].
 
 2.4.  Schema
 
@@ -260,6 +329,14 @@ Internet-Draft       Attribute Registry Requirements          March 2011
    lookup but not search.  In other words it is possible to, given a
    domain name, lookup the corresponding records in the DNS but it is
    not in general possible to search for records given knowledge of part
+
+
+
+Johansson & Flanagan    Expires January 31, 2013                [Page 6]
+
+Internet-Draft       Attribute Registry Requirements           July 2012
+
+
    of a domain name.
 
 
@@ -269,17 +346,6 @@ Internet-Draft       Attribute Registry Requirements          March 2011
 
    registry  An instance of an attribute registry fulfilling these
       requirements.
-
-
-
-
-
-
-
-Johansson               Expires September 2, 2011               [Page 5]
-
-Internet-Draft       Attribute Registry Requirements          March 2011
-
 
    consumer  A user, device, process or other entity that consumes
       information from the registry.
@@ -319,6 +385,14 @@ Internet-Draft       Attribute Registry Requirements          March 2011
    o  The registry MAY support aliases that are namespace-free short
       names.
 
+
+
+
+Johansson & Flanagan    Expires January 31, 2013                [Page 7]
+
+Internet-Draft       Attribute Registry Requirements           July 2012
+
+
    o  The registry SHOULD (if such names are supported) impose
       restrictions on registering short names.
 
@@ -328,14 +402,6 @@ Internet-Draft       Attribute Registry Requirements          March 2011
 
    o  The native attribute type schema MUST map cleanly (in)to X.520/
       LDAP schema for attribute types
-
-
-
-
-Johansson               Expires September 2, 2011               [Page 6]
-
-Internet-Draft       Attribute Registry Requirements          March 2011
-
 
    o  The native attribute type schema MAY only represent a subset of
       the features of X.520/LDAP schema
@@ -374,6 +440,15 @@ Internet-Draft       Attribute Registry Requirements          March 2011
    This memo includes no request to IANA.
 
 
+
+
+
+
+Johansson & Flanagan    Expires January 31, 2013                [Page 8]
+
+Internet-Draft       Attribute Registry Requirements           July 2012
+
+
 7.  Security Considerations
 
    Attributes are often used to carry sensitive information as part of
@@ -382,15 +457,6 @@ Internet-Draft       Attribute Registry Requirements          March 2011
    Some attributes carry identifiers as values.  A discussion of the
    security implications of handling identifiers can be found in
    draft-iab-identifier-comparison [I-D.iab-identifier-comparison].
-
-
-
-
-
-
-Johansson               Expires September 2, 2011               [Page 7]
-
-Internet-Draft       Attribute Registry Requirements          March 2011
 
 
 8.  Normative References
@@ -403,8 +469,25 @@ Internet-Draft       Attribute Registry Requirements          March 2011
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997.
 
+   [RFC3401]  Mealling, M., "Dynamic Delegation Discovery System (DDDS)
+              Part One: The Comprehensive DDDS", RFC 3401, October 2002.
 
-Author's Address
+   [RFC3402]  Mealling, M., "Dynamic Delegation Discovery System (DDDS)
+              Part Two: The Algorithm", RFC 3402, October 2002.
+
+   [RFC3403]  Mealling, M., "Dynamic Delegation Discovery System (DDDS)
+              Part Three: The Domain Name System (DNS) Database",
+              RFC 3403, October 2002.
+
+   [RFC3404]  Mealling, M., "Dynamic Delegation Discovery System (DDDS)
+              Part Four: The Uniform Resource Identifiers (URI)",
+              RFC 3404, October 2002.
+
+   [RFC6557]  Lear, E. and P. Eggert, "Procedures for Maintaining the
+              Time Zone Database", BCP 175, RFC 6557, February 2012.
+
+
+Authors' Addresses
 
    Leif Johansson (editor)
    NORDUnet
@@ -417,6 +500,19 @@ Author's Address
 
 
 
+Johansson & Flanagan    Expires January 31, 2013                [Page 9]
+
+Internet-Draft       Attribute Registry Requirements           July 2012
+
+
+   Heather Flanagan
+   Internet2
+   1000 Oakbrook Drive Suite 300
+   Ann Arbor, MI  48104
+   US
+
+   Phone: +1-360-562-0319
+   Email: hlflanagan@internet2.edu
 
 
 
@@ -444,5 +540,21 @@ Author's Address
 
 
 
-Johansson               Expires September 2, 2011               [Page 8]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Johansson & Flanagan    Expires January 31, 2013               [Page 10]
 
