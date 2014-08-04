@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="US-ASCII"?>
+<?xml version="1.0" encoding="utf8"?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd">
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 <?rfc strict="yes" ?>
@@ -8,7 +8,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="info" docName="draft-johansson-areg-reqs-00"
+<rfc category="info" docName="draft-johansson-areg-reqs-01"
      ipr="pre5378Trust200902">
   <front>
     <title abbrev="Attribute Registry Requirements">Requirements on an
@@ -24,37 +24,37 @@
     </author>
  
     <author fullname="Heather Flanagan" initials="H" surname="Flanagan">
-      <organization>Internet2</organization>
+      <organization>Spherical Cow Consulting</organization>
 
       <address>
         <postal>
-          <street>1000 Oakbrook Drive Suite 300</street>
+          <street></street>
 
-          <city>Ann Arbor</city>
+          <city></city>
 
-          <region>MI</region>
+          <region></region>
 
-          <code>48104 </code>
+          <code></code>
 
-          <country>US</country>
+          <country></country>
         </postal>
 
-        <phone>+1-360-562-0319</phone>
+        <phone></phone>
 
-        <email>hlflanagan@internet2.edu</email>
+        <email>hlf@sphericalcowconsulting.com</email>
 
       </address>
     </author>
 
-    <date day="30" month="July" year="2012" />
+    <date day="1" month="August" year="2014" />
 
     <area>General</area>
 
     <workgroup>Internet Engineering Task Force</workgroup>
 
     <abstract>
-      <t>This document establishes requirements for a registry of attributes
-      type definitions.</t>
+      <t>This document establishes requirements for a registry of 
+      attribute-type definitions.</t>
     </abstract>
 
     <note title="Requirements Language">
@@ -72,11 +72,11 @@
       type') is defined by semantics and syntax that allow it to be used in a
       variety of protocols and representations.</t>
 
-      <t>This document lists requrements for a registry of such attribute type
+      <t>This document lists requrements for a registry of such attribute-type
       definitions. For a long time, protocols that rely on the transfer of
       attributes (like OpenID Connect, OAUTH, WS-Federation or SAML) often
       rely on, at least in the case of attributes associated with accounts and
-      persons, attribute type definitions that are borrowed from LDAP or X.509
+      persons, attribute-type definitions that are borrowed from LDAP or X.509
       schema even though those particular protocols no longer represent the
       common method to transfer and consume attributes.</t>
 
@@ -86,7 +86,7 @@
       attribute-values as a means to communicate subject information. Identity
       federations are often purposed to specific communities. Increasingly
       such communities need to engage in transactions across federation
-      boundries (eg when sharing services with other communities). This
+      boundaries (e.g., when sharing services with other communities). This
       practice is called inter-federation. Inter-federation raises the need
       for a way to discover information about the attributes used in the
       protocols employed inside and between federations.</t>
@@ -98,8 +98,8 @@
     </section>
 
     <section title="Core Concerns">
-      <t>In order to set the stage for, and properly frame the registry
-      requirements the following section lists a set of core concerns that
+      <t>In order to set the stage for and properly frame the registry
+      requirements, the following section lists a set of core concerns that
       MUST be address by the registry requirements proper:</t>
 
       <section title="Naming">
@@ -111,7 +111,7 @@
         name that can be allocated, delegated and used to stablish global
         uniqueness.</t>
 
-        <t>There are examples of attribute type definitions that are in common
+        <t>There are examples of attribute-type definitions that are in common
         use today that employ a variety of name spaces including both OIDs,
         http-based URIs and URNs.</t>
 
@@ -132,26 +132,26 @@
         used in conjunction with individual transactions or as a tool for
         configuration, discovery and information related to the task of
         setting up federations and other relationships using claims-based
-        protocols. The former use-case requires a global service available 247
+        protocols. The former use-case requires a global service available 24x7
         while the latter requires the availability typically found in a
         website providing documentation.</t>
 
         <t>This document is skewed towards the former use-case. The authors
         believe that the operational issues involved in the latter type of
-        registry would be daunting to say the least and it is only presented
+        registry would be daunting to say the least; it is only presented
         here for completeness.</t>
       </section>
 
       <section title="Data Locality">
         <t>There are two fundamental models for registries (as for any data
         store): centralized and distributed. In a central registry all the
-        information is kept and maintained in one place whereas a distributed
+        information is kept and maintained in one place, whereas a distributed
         registry shares information in the registry over multiple cooperative
         instances that together make up the full registry. It is possible to
         concieve of hybrid models where for instance a central index is used
         to store referrals to a set of distributed nodes.</t>
 
-        <t>The distributed model is most often used when there expected use of
+        <t>The distributed model is most often used when the expected use of
         the registry would imply a very high load on a single registry
         instance. An example of a system with this property is the DNS. A
         distributed registry model has implications for requirements on lookup
@@ -160,7 +160,7 @@
 
         <t>The central model by contrast is simpler in that no protocol needs
         to be specified for communicating between registry instances and that
-        lookup can be handled to a single well know instance. This model may
+        lookup can be handled to a single well-know instance. This model may
         be preferred if the total amount of data in the registry is relatively
         small (at least compared to the DNS or systems of similar scale). The
         fact that the registry is operated in a single instance does not
@@ -175,10 +175,10 @@
       </section>
 
       <section title="Schema">
-        <t>As was stated in the introduction LDAP and X.509 attribute schema
+        <t>As was stated in the introduction, an LDAP and X.509 attribute schema
         is commonly used to describe attribute-types for claims-based
         protocols. Recently however there is a trend towards defining "raw
-        attributes", i.e attribute types that are not supported by a
+        attributes", i.e, attribute-types that are not supported by a
         corresponding directory schema. Thus there may be a need to define a
         "directory-neutral" attribute-type schema langue. In either case there
         will probably be a need to support multiple schema in the
@@ -189,10 +189,10 @@
         These are schema elements that often list a set of mandatory and/or
         optional associated attributes.</t>
 
-        <t>Depending on he intended use of the registry there may need to
-        exist a native attribute schema for the registry which may or may not
+        <t>Depending on the intended use of the registry, a native attribute 
+        schema may need to exist for the registry that may or may not
         need to represent the complete set of properties of each attribute
-        type. For instance if the intended use of the registry is to support
+        type. For instance, if the intended use of the registry is to support
         configuration and setup of federation, rather than in-transaction
         discovery of attribute properties, the registry native schema may not
         have to include all information of each attribute. Instead it would be
@@ -208,8 +208,8 @@
         searched. To draw an example from the DNS again: The DNS supports
         lookup but not search. In other words it is possible to, given a
         domain name, lookup the corresponding records in the DNS but it is not
-        in general possible to search for records given knowledge of part of a
-        domain name.</t>
+        in generally possible to search for records given knowledge of only part 
+        of a domain name.</t>
       </section>
     </section>
 
@@ -220,12 +220,12 @@
           <t hangText="registry">An instance of an attribute registry
           fulfilling these requirements.</t>
 
-          <t hangText="consumer">A user, device, process or other entity that
+          <t hangText="consumer">A user, device, process, or other entity that
           consumes information from the registry.</t>
 
           <t hangText="attribute type">An element of the registry.</t>
 
-          <t hangText="attribute name">Synonymous with attribute type name</t>
+          <t hangText="attribute name">Synonymous with attribute-type name</t>
         </list></t>
 
       <section title="Use">
@@ -233,11 +233,11 @@
             <t>A consumer MUST NOT directly use the registry for
             in-transaction lookup.</t>
           </list>The registry is primarily intended for use as a tool to help
-        discover attribute type information related to setup and configuration
+        discover attribute-type information related to setup and configuration
         of federations. While services that directly tie in to authentication
-        events (for instance in order to provide i18n of attribute friendly
-        names) may be needed, such services can always be developed as
-        commercial spin-offs from the basic registry.</t>
+        events (for instance, in order to provide for the internationalization 
+        of attribute-friendly names) may be needed, such services can always 
+        be developed as commercial spin-offs from the basic registry.</t>
       </section>
 
       <section title="Data Locality">
@@ -245,8 +245,8 @@
             <t>The registry SHOULD be established as a central,
             non-distributed registry.</t>
           </list>Since the primary use of the registry is not for
-        in-transaction lookups the registry does not need to be distributed
-        which reduces the complexity of the registry.</t>
+        in-transaction lookups, the registry does not need to be distributed.
+        This reduces the complexity of the registry.</t>
       </section>
 
       <section title="Naming">
@@ -254,7 +254,7 @@
             <t>The registry MUST support multiple name spaces for naming
             attribute types.</t>
 
-            <t>The registry MUST support attribute type name aliases.</t>
+            <t>The registry MUST support attribute-type name aliases.</t>
 
             <t>The registry MAY support aliases that are namespace-free short
             names.</t>
@@ -270,23 +270,23 @@
         <t><list style="symbols">
             <t>The registry SHOULD support a native attribute type schema.</t>
 
-            <t>The native attribute type schema MUST map cleanly (in)to
+            <t>The native attribute-type schema MUST map cleanly (in)to
             X.520/LDAP schema for attribute types</t>
 
-            <t>The native attribute type schema MAY only represent a subset of
+            <t>The native attribute-type schema MAY only represent a subset of
             the features of X.520/LDAP schema</t>
 
-            <t>The native attribute type schema SHOULD support multiple
+            <t>The native attribute-type schema SHOULD support multiple
             serializations (XML,JSON,etc)</t>
           </list></t>
       </section>
 
       <section title="Lookup and Search">
         <t><list style="symbols">
-            <t>The registry MUST support lookup based on attribute type
+            <t>The registry MUST support lookup based on attribute-type
             name.</t>
 
-            <t>The registry MUST support lookup based on attribute type
+            <t>The registry MUST support lookup based on attribute-type
             aliases if they are provided.</t>
 
             <t>The registry MAY support search but registry consumers MUST NOT
@@ -318,7 +318,8 @@
       values that are used to allow or deny access to a protected resource.
       Some attributes carry identifiers as values. A discussion of the
       security implications of handling identifiers can be found in <xref
-      target="I-D.iab-identifier-comparison">draft-iab-identifier-comparison</xref>.</t>
+      target="RFC6943">"Issues in Identifier Comparison for Security 
+      Purposes"</xref>.</t>
     </section>
   </middle>
 
@@ -336,7 +337,7 @@
 
       <?rfc include="reference.RFC.6557"?>
 
-      <?rfc include="reference.I-D.iab-identifier-comparison"?>
+      <?rfc include="reference.RFC.6943"?>
     </references>
   </back>
 </rfc>
