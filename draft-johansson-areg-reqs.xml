@@ -72,7 +72,7 @@
       type') is defined by semantics and syntax that allow it to be used in a
       variety of protocols and representations.</t>
 
-      <t>This document lists requrements for a registry of such attribute-type
+      <t>This document lists requirements for a registry of such attribute-type
       definitions. For a long time, protocols that rely on the transfer of
       attributes (like OpenID Connect, OAUTH, WS-Federation or SAML) often
       rely on, at least in the case of attributes associated with accounts and
@@ -108,7 +108,7 @@
         core concern implied by the existence of names is one of name
         management. A common way to implement name management is to structure
         the names in such a way as to establish name-spaces - parts of the
-        name that can be allocated, delegated and used to stablish global
+        name that can be allocated, delegated and used to establish global
         uniqueness.</t>
 
         <t>There are examples of attribute-type definitions that are in common
@@ -129,15 +129,15 @@
 
       <section title="Use">
         <t>The core usage-question is this: will the attribute registry be
-        used in conjunction with individual transactions or as a tool for
+        used in conjunction with individual transactions, e.g. in-transactions discovery of attribute properties, or as a tool for
         configuration, discovery and information related to the task of
         setting up federations and other relationships using claims-based
         protocols. The former use-case requires a global service available 24x7
         while the latter requires the availability typically found in a
         website providing documentation.</t>
 
-        <t>This document is skewed towards the former use-case. The authors
-        believe that the operational issues involved in the latter type of
+        <t>This document is skewed towards the latter use-case. The authors
+        believe that the operational issues involved in the former type of
         registry would be daunting to say the least; it is only presented
         here for completeness.</t>
       </section>
@@ -148,7 +148,7 @@
         information is kept and maintained in one place, whereas a distributed
         registry shares information in the registry over multiple cooperative
         instances that together make up the full registry. It is possible to
-        concieve of hybrid models where for instance a central index is used
+        conceive of hybrid models where for instance a central index is used
         to store referrals to a set of distributed nodes.</t>
 
         <t>The distributed model is most often used when the expected use of
@@ -198,7 +198,7 @@
         have to include all information of each attribute. Instead it would be
         possible to maintain a minimal set of core properties in the registry
         and provide references to external information sources that could be
-        chaised for additional information.</t>
+        chased for additional information.</t>
       </section>
 
       <section title="Lookup and Search">
@@ -207,13 +207,13 @@
         requirements on the representation and schema of the data to be
         searched. To draw an example from the DNS again: The DNS supports
         lookup but not search. In other words it is possible to, given a
-        domain name, lookup the corresponding records in the DNS but it is not
-        in generally possible to search for records given knowledge of only part 
+        domain name, lookup the corresponding records in the DNS but it is
+        generally not possible to search for records given knowledge of only part 
         of a domain name.</t>
       </section>
     </section>
 
-    <section title="Requrements">
+    <section title="Requirements">
       <t>The following terminology is used in this section:</t>
 
       <t><list style="hanging">
